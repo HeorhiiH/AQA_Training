@@ -14,6 +14,6 @@ test('login', async ({ page }) => {
   await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
   // line 11 i think more reliable
   // await expect(page.getByText('My account')).toBeVisible();
-  await expect(page.locator('[data-test="page-title"]')).toContainText('My account');
+  await expect(page.getByTestId("page-title")).toContainText('My account');
   await expect(page.locator('#menu')).toContainText(user.name);
 });
