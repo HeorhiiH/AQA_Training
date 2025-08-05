@@ -1,0 +1,24 @@
+{
+  "name": "aqa_training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run_test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeorhiiH/AQA_Training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeorhiiH/AQA_Training/issues"
+  },
+  "homepage": "https://github.com/HeorhiiH/AQA_Training#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.1.0"
+  }
+}
