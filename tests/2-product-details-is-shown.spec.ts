@@ -11,6 +11,4 @@ test('login', async ({ page }) => {
   await expect(page.getByTestId("unit-price")).toContainText('14.15');
   await expect(page.getByTestId('add-to-cart')).toBeVisible();
   await expect(page.getByTestId('add-to-favorites')).toBeVisible();
-  
-//   await expect(page.locator('#menu')).toContainText(user.name);
 });
