@@ -2,8 +2,10 @@ import { test, expect } from '@playwright/test';
 import { HomePage } from '../Pages/homePage';
 
 test('login', async ({ page }) => {
+   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
+
   const homePage = new HomePage(page);
-  await page.goto('https://practicesoftwaretesting.com ');
+  await page.goto('https://practicesoftwaretesting.com');
   await homePage.openProductPage('Combination Pliers');
 
   await expect(page).toHaveURL(url => url.toString().includes('https://practicesoftwaretesting.com/product'));
