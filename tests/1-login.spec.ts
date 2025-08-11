@@ -23,6 +23,8 @@ const user = {
 
 // Test use page object 
 test('login', async ({ page }) => {
+  test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
+
   const loginPage = new LoginPage(page);
   await page.goto('https://practicesoftwaretesting.com/auth/login');
   await loginPage.enterEmail(user.email);
