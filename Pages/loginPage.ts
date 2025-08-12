@@ -26,7 +26,7 @@ export class LoginPage {
   
     }
 
-    async clickButton(){
+    async clickLoginButton(){
         await this.loginButton.click();
     }
 

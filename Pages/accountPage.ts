@@ -18,19 +18,9 @@ export class AccountPage {
         this.messagesLink = page.getByTestId('nav-messages');
     }
 
-    async clickFavoritesLink(){
-        await this.favoritesLink.click();
+    // I do not think that it is useful but add it for practice 
+    async clickSomeLink(locator: Locator){
+        await locator.click();
     }
 
-    async clickProfileLink(){
-        await this.profileLink.click();
-    }
-
-    async clickInvoicesLink(){
-        await this.invoicesLink.click();
-    }
-
-    async clickMessagesLink(){
-        await this.messagesLink.click();
-    }
 }

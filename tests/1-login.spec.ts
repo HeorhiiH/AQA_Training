@@ -29,7 +29,7 @@ test('login', async ({ page }) => {
   await page.goto('https://practicesoftwaretesting.com/auth/login');
   await loginPage.enterEmail(user.email);
   await loginPage.enterPassword(user.password);
-  await loginPage.clickButton();
+  await loginPage.clickLoginButton();
   await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
   await expect(page.getByTestId("page-title")).toContainText('My account');
   await expect(page.locator('#menu')).toContainText(user.name);
