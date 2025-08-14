@@ -23,7 +23,6 @@ export class LoginPage {
 
     async enterPassword (password: string) {
          await this.passwordInput.fill(password);
-  
     }
 
     async clickLoginButton(){

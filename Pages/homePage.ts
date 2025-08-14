@@ -57,15 +57,6 @@ export class HomePage {
         await this.sortSelectOption.getByText(order).click();
     }
 
-    async nextPage () {
-        await this.paginationNextPage.click();
-    }
-
-    async previousPage () {
-        await this.paginationPreviousPage.click();
-    }
-
-    // Check this method. Does getByText method catch number? Yes it catches
     async somePage (number: string) {
         await this.paginationSomePage.getByText(number).click();
     }

@@ -26,11 +26,11 @@ test('login', async ({ page }) => {
   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
   const loginPage = new LoginPage(page);
-  await page.goto('https://practicesoftwaretesting.com/auth/login');
+  await page.goto('/auth/login');
   await loginPage.enterEmail(user.email);
   await loginPage.enterPassword(user.password);
   await loginPage.clickLoginButton();
-  await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
+  await expect(page).toHaveURL('/account');
   await expect(page.getByTestId("page-title")).toContainText('My account');
   await expect(page.locator('#menu')).toContainText(user.name);
 });

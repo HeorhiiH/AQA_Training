@@ -18,9 +18,4 @@ export class AccountPage {
         this.messagesLink = page.getByTestId('nav-messages');
     }
 
-    // I do not think that it is useful but add it for practice 
-    async clickSomeLink(locator: Locator){
-        await locator.click();
-    }
-
 }
