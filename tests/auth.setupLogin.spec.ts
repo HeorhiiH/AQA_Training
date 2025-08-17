@@ -22,7 +22,7 @@ setup('authenticate', async ({ page }) => {
   
   // await expect(page).toHaveURL('/account');
 
-   await page.goto('https://practicesoftwaretesting.com/auth/login');
+  await page.goto('https://practicesoftwaretesting.com/auth/login');
   await page.locator('#email').fill(user.email);
   await page.locator('#password').fill(user.password);
   await page.getByTestId('login-submit').click();

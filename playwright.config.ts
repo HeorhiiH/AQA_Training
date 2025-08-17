@@ -36,7 +36,7 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
 
-    { name: 'setupLogin', testMatch: /.*\.setupLogin\.ts/ },
+    { name: 'setupLogin', testMatch: /.*\.setupLogin\.spec\.ts$/  },
 
     {
       name: 'chromium',
