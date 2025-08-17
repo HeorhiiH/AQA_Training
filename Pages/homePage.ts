@@ -5,12 +5,13 @@ export class HomePage {
     page: Page;
     header: HeaderFragment;
     productLink: Locator;
+    productName: Locator;
+    productPrice: Locator
     paginationPreviousPage: Locator;
     paginationNextPage: Locator;
     paginationSomePage: Locator;
     checkboxItem: Locator;
     sortSelect: Locator;
-    sortSelectOption: Locator;
     searchInput: Locator;
     clearSearchButton: Locator;
     searchButton: Locator;
@@ -21,12 +22,14 @@ export class HomePage {
         this.page = page;
         this.header = new HeaderFragment(page);
         this.productLink = page.locator('a.card');
+        this.productName = page.getByTestId('product-name');
+        this.productPrice = page.getByTestId('product-price');
         this.paginationPreviousPage = page.locator('a[aria-label="Previous"]');
         this.paginationNextPage = page.locator('a[aria-label="Next"]');
         this.paginationSomePage = page.locator('a.page-link');
-        this.checkboxItem = page.locator('input[type="checkbox"]');
+        this.checkboxItem = page.locator('label');
+        // this.checkboxItem = page.locator('input[type="checkbox"]');
         this.sortSelect = page.getByTestId('sort');
-        this.sortSelectOption = page.locator('option');
         this.searchInput = page.getByTestId('search-query');
         this.clearSearchButton = page.getByTestId('search-reset');
         this.searchButton = page.getByTestId('search-submit');
@@ -54,7 +57,7 @@ export class HomePage {
 
     async sortProducts (order: string){
         await this.sortSelect.click();
-        await this.sortSelectOption.getByText(order).click();
+        await this.sortSelect.selectOption(order);
     }
 
     async somePage (number: string) {
