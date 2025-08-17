@@ -18,14 +18,18 @@ export class LoginPage {
     }
 
     async enterEmail(email: string){
+        // Add line because have a problem with setupLogin on CI
+        await this.emailInput.waitFor({ state: 'visible', timeout: 10000 });
         await this.emailInput.fill(email);
     }
 
     async enterPassword (password: string) {
+        await this.emailInput.waitFor({ state: 'visible', timeout: 10000 });
          await this.passwordInput.fill(password);
     }
 
     async clickLoginButton(){
+        await this.emailInput.waitFor({ state: 'visible', timeout: 10000 });
         await this.loginButton.click();
     }
 
