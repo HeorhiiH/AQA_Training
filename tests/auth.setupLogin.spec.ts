@@ -17,10 +17,10 @@ setup('authenticate', async ({ page }) => {
 
   const loginPage = new LoginPage(page);
   await page.goto('/auth/login');
+  await page.waitForTimeout(2500);
 
-  await page.locator('#email').waitFor({ state: 'visible', timeout: 2000 });
-
-  await loginPage.enterEmail(user.email);
+  await page.locator('input[data-test="email"]').fill(user.email);
+  // await loginPage.enterEmail(user.email);
   await loginPage.enterPassword(user.password);
   await loginPage.clickLoginButton();
   
