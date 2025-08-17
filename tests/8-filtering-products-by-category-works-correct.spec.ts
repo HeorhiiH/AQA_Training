@@ -1,7 +1,12 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../Pages/homePage';
 
-enum HandTools {
+
+
+test('login', async ({ page }) => {
+  test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
+
+  enum HandTools {
   Hammer,
   Hand_Saw ='Hand Saw',
   Wrench = 'Wrench',
@@ -25,9 +30,6 @@ enum Other {
     Safety_Gear = 'Safety Gear',
     Fasteners = 'Fasteners',
 }
-
-test('login', async ({ page }) => {
-  test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
   const homePage = new HomePage(page);
   await page.goto('');
