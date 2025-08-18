@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { HomePage, PowerTools } from '../Pages/homePage';
+import { HomePage } from '../Pages/homePage';
+import { PowerTools } from '../Enum/HomePageEnum';
 
 
 
@@ -12,7 +13,7 @@ test('login', async ({ page }) => {
   await page.waitForTimeout(3000);
   const namesArray = await homePage.productName.allInnerTexts();
   const checkFilterParam = function (arr: string[]) {
-    return arr.every(name => name.includes("Sander"));
+    return arr.every(name => name.includes(PowerTools.Sander));
   }
   expect(checkFilterParam(namesArray)).toBeTruthy();
 });

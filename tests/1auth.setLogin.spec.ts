@@ -40,8 +40,9 @@
 
 
 
+/// I would like save this file. I will try to go through login in classic way 
 
-///заглушка
+/// Line below just for git actions
 
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../Pages/homePage';
@@ -55,3 +56,4 @@ test('login', async ({ page }) => {
 
   await expect(page).toHaveURL(url => url.toString().includes('/product'));
 });
+
