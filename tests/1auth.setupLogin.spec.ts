@@ -43,8 +43,15 @@
 
 ///заглушка
 
+import { test, expect } from '@playwright/test';
+import { HomePage } from '../Pages/homePage';
+
 test('login', async ({ page }) => {
   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
-  await page.goto('/auth/login');
+  const homePage = new HomePage(page);
+  await page.goto('');
+  await homePage.openProductPage('Combination Pliers');
+
+  await expect(page).toHaveURL(url => url.toString().includes('/product'));
 });
