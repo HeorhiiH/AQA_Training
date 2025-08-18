@@ -18,6 +18,8 @@ setup('authenticate', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await page.goto('/auth/login');
   await page.waitForTimeout(2500);
+  await expect(page).toHaveURL('/auth/login');
+
 
   await page.locator('input[data-test="email"]').fill(user.email);
   // await loginPage.enterEmail(user.email);
