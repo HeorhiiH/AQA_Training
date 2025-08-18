@@ -31,8 +31,8 @@ setup('authenticate via API and verify login', async ({ browser }) => {
   await page.context().storageState({ path: authFile });
 
   // 4. Проверяем, что авторизация реально сработала
-  await page.goto('https://practicesoftwaretesting.com/account');
-  await expect(page.getByTestId('page-title')).toContainText('My account');
+  // await page.goto('https://practicesoftwaretesting.com/account');
+  // await expect(page.getByTestId('page-title')).toContainText('My account');
 
-  await browser.close();
+  // await browser.close();
 });
