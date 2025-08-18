@@ -4,7 +4,7 @@ import { HomePage, PowerTools } from '../Pages/homePage';
 
 
 test('login', async ({ page }) => {
-  test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
+ test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
   const homePage = new HomePage(page);
   await page.goto('');

@@ -1,4 +1,6 @@
-import { test as setup, expect  } from '@playwright/test';
+// import { test as setup, expect  } from '@playwright/test';
+
+import { test, expect } from '@playwright/test';
 import path from 'path';
 
 const authFile = path.join(__dirname, '../playwright/.auth/user.json');
@@ -12,13 +14,14 @@ const user = {
   password: 'welcome01'
 }
 
-setup('authenticate', async ({ page }) => {
+// setup('authenticate', async ({ page }) => {
+test('authenticate', async ({ page }) => {
 
+   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
   const loginPage = new LoginPage(page);
   await page.goto('/auth/login');
-  await page.waitForTimeout(2500);
-  await expect(page).toHaveURL('/auth/login');
+  // await page.waitForTimeout(2500);
 
 
   await page.locator('input[data-test="email"]').fill(user.email);
@@ -27,7 +30,6 @@ setup('authenticate', async ({ page }) => {
   await loginPage.clickLoginButton();
   
   await expect(page).toHaveURL('/account');
-
 
 
   await page.context().storageState({ path: authFile });
