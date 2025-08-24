@@ -28,7 +28,6 @@ export class HomePage {
         this.paginationNextPage = page.locator('a[aria-label="Next"]');
         this.paginationSomePage = page.locator('a.page-link');
         this.checkboxItem = page.locator('label');
-        // this.checkboxItem = page.locator('input[type="checkbox"]');
         this.sortSelect = page.getByTestId('sort');
         this.searchInput = page.getByTestId('search-query');
         this.clearSearchButton = page.getByTestId('search-reset');
@@ -64,29 +63,22 @@ export class HomePage {
         await this.paginationSomePage.getByText(number).click();
     }
 
-}
+    // async responseWaiting (param) {
+    //     await this.page.waitForResponse(response =>
+    //     response.url().includes(param) &&
+    //     response.status() === 200
+    //     );
+    // } "sort=name,asc"
 
-export enum HandTools {
-  Hammer,
-  Hand_Saw ='Hand Saw',
-  Wrench = 'Wrench',
-  Screwdriver = 'Screwdriver',
-  Pliers = 'Pliers',
-  Chisels = 'Chisels',
-  Measures = 'Measures',
-}
+    async responseWaiting(param: string): Promise<import('@playwright/test').APIResponse> {
+        const response = await this.page.waitForResponse(res =>
+        res.url().startsWith("https://api.practicesoftwaretesting.com/products") &&
+        res.url().includes(param) &&
+        res.ok()   // статус 2xx
+        );
+        return response;
+    }
 
-export enum PowerTools {
-    Grinder = 'Grinder',
-    Sander = 'Sander',
-    Saw = 'Saw',
-    Drill = 'Drill',
-}
+    
 
-export enum Other {
-    Tool_Belts = 'Tool Belts',
-    Storage_Solutions = 'Storage Solutions',
-    Workbench = 'Workbench',
-    Safety_Gear = 'Safety Gear',
-    Fasteners = 'Fasteners',
 }

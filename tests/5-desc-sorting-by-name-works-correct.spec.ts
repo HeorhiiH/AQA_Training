@@ -7,19 +7,19 @@ test('login', async ({ page }) => {
   const homePage = new HomePage(page);
   await page.goto('');
   await homePage.sortProducts('Name (Z - A)');
-  await page.waitForTimeout(3000);
+  await homePage.responseWaiting("sort=name,desc")
   const namesArray = await homePage.productName.allInnerTexts();
   const alphabeticDescCheck = function (arr: string[]): boolean {
-  if (arr.length <= 1) {
-    return true;
-  }
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i].toLowerCase() > arr[i - 1].toLowerCase()) {
-      return false;
+    if (arr.length <= 1) {
+      return true;
     }
-  }
-  return true;
-};
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i].toLowerCase() > arr[i - 1].toLowerCase()) {
+        return false;
+      }
+    }
+    return true;
+  };
 expect(alphabeticDescCheck(namesArray)).toBeTruthy();
   
 });

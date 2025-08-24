@@ -9,19 +9,19 @@ test('login', async ({ page }) => {
   await homePage.sortProducts('Name (A - Z)');
   // This is the only method that worked among all I tried.
   // Playwright works too fast, and allInnerTexts gets the array before the list has been sorted.
-  await page.waitForTimeout(3000);
+  // await page.waitForTimeout(3000);
+  await homePage.responseWaiting("sort=name,asc")
   const namesArray = await homePage.productName.allInnerTexts();
   const alphabeticAscCheck = function (arr: string[]): boolean {
-  if (arr.length <= 1) {
-    return true;
-  }
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i].toLowerCase() < arr[i - 1].toLowerCase()) {
-      return false;
+    if (arr.length <= 1) {
+      return true;
     }
-  }
-  return true;
-};
-expect(alphabeticAscCheck(namesArray)).toBeTruthy();
-  
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i].toLowerCase() < arr[i - 1].toLowerCase()) {
+        return false;
+      }
+    }
+    return true;
+  };
+expect(alphabeticAscCheck(namesArray)).toBeTruthy();  
 });

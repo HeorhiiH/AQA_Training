@@ -30,11 +30,5 @@ setup('authenticate via API and verify login', async ({ browser }) => {
   // 3. Сохраняем state
   await page.context().storageState({ path: authFile }); 
 
-  // 4. Проверка, что авторизация реально сработала
-  // await page.goto('https://practicesoftwaretesting.com/account');
-  // await expect(page.getByTestId('page-title')).toContainText('My account');
-  // Закоментировал так как с этими строками падал тест.
-  // Похоже клауд флеер на этих строках изучает время между действиями
-
   // await browser.close();
 });
