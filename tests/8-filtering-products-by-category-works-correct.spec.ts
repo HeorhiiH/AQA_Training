@@ -4,9 +4,10 @@ import { PowerTools } from '../Enum/homePageEnum';
 
 
 
-test.skip(!!process.env.GITHUB_ACTIONS, 'Skip in GitHub Actions');
+
 
 test.describe('Filtering by categories', () => {
+
   const filters = [
     {
       path: "by_category=01K3E2MCJEP5TERTNDRP8ZVWPB",
@@ -17,6 +18,8 @@ test.describe('Filtering by categories', () => {
   filters.forEach(({ path, label }) => {
 
     test(`should filter products by category: ${label}`, async ({ page }) => {
+      test.skip(!!process.env.GITHUB_ACTIONS, 'Skip in GitHub Actions');
+      
       // answer log
       //Sometimes website change id of the category .... :( 
       // page.on('response', res => {
