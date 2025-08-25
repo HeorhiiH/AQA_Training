@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../Pages/loginPage';
+import { LoginPage } from '../pages/loginPage';
 
 
 const user = {

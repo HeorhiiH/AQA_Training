@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../Pages/homePage';
+import { HomePage } from '../pages/homePage';
 
-test('login', async ({ page }) => {
+test('sorting by name asc', async ({ page }) => {
   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
   const homePage = new HomePage(page);
@@ -12,16 +12,6 @@ test('login', async ({ page }) => {
   // await page.waitForTimeout(3000);
   await homePage.responseWaiting("sort=name,asc")
   const namesArray = await homePage.productName.allInnerTexts();
-  const alphabeticAscCheck = function (arr: string[]): boolean {
-    if (arr.length <= 1) {
-      return true;
-    }
-    for (let i = 1; i < arr.length; i++) {
-      if (arr[i].toLowerCase() < arr[i - 1].toLowerCase()) {
-        return false;
-      }
-    }
-    return true;
-  };
-expect(alphabeticAscCheck(namesArray)).toBeTruthy();  
+  expect(homePage.alphabeticAscCheck(namesArray)).toBeTruthy();  
+  
 });

@@ -59,9 +59,57 @@ export class HomePage {
         await this.sortSelect.selectOption(order);
     }
 
-    async somePage (number: string) {
+    async switchPaginationPage (number: string) {
         await this.paginationSomePage.getByText(number).click();
     }
+
+    alphabeticAscCheck (arr: string[]): boolean {
+        if (arr.length <= 1) {
+            return true;
+        }
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i].toLowerCase() < arr[i - 1].toLowerCase()) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    alphabeticDescCheck (arr: string[]): boolean {
+        if (arr.length <= 1) {
+        return true;
+        }
+        for (let i = 1; i < arr.length; i++) {
+        if (arr[i].toLowerCase() > arr[i - 1].toLowerCase()) {
+            return false;
+        }
+        }
+        return true;
+    };
+
+    numberAscCheck (arr: number[]): boolean {
+    if (arr.length <= 1) {
+      return true;
+    }
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] > arr[i - 1]) {
+        return false;
+      }
+    }
+    return true;
+   };
+
+    numberDescCheck (arr: number[]): boolean {
+        if (arr.length <= 1) {
+            return true;
+        }
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    };
 
     // async responseWaiting (param) {
     //     await this.page.waitForResponse(response =>
@@ -72,9 +120,9 @@ export class HomePage {
 
     async responseWaiting(param: string): Promise<import('@playwright/test').APIResponse> {
         const response = await this.page.waitForResponse(res =>
-        res.url().startsWith("https://api.practicesoftwaretesting.com/products") &&
+        res.url().startsWith("https://api.practicesoftwaretesting.com/products") && // use regexp
         res.url().includes(param) &&
-        res.ok()   // статус 2xx
+        res.ok()   // statuses 2xx
         );
         return response;
     }

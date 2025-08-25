@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../Pages/homePage';
+import { HomePage } from '../pages/homePage';
 
-test('login', async ({ page }) => {
+test('sorting by price desc', async ({ page }) => {
   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
   const homePage = new HomePage(page);
@@ -13,16 +13,7 @@ test('login', async ({ page }) => {
   for (const price of priceArray ){
     onlyPriceValueArray.push(parseFloat(price.replace('$', '')));
   }
-  const numberAscCheck = function (arr: number[]): boolean {
-    if (arr.length <= 1) {
-      return true;
-    }
-    for (let i = 1; i < arr.length; i++) {
-      if (arr[i] > arr[i - 1]) {
-        return false;
-      }
-    }
-    return true;
-  };
-expect(numberAscCheck(onlyPriceValueArray)).toBeTruthy();
+
+  expect(homePage.numberAscCheck(onlyPriceValueArray)).toBeTruthy();
+
 });

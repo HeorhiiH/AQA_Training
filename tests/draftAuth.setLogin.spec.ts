@@ -45,7 +45,7 @@
 /// Line below just for git actions
 
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../Pages/homePage';
+import { HomePage } from '../pages/homePage';
 
 test('login', async ({ page }) => {
   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');

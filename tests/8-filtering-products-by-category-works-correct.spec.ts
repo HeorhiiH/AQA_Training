@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../Pages/homePage';
-import { PowerTools } from '../Enum/homePageEnum';
+import { HomePage } from '../pages/homePage';
+import { PowerTools } from '../enum/homePageEnum';
 
 
 
@@ -22,11 +22,11 @@ import { PowerTools } from '../Enum/homePageEnum';
 
 //Work on local environment but has a problem on CI with enum import
 //No, git ignored rename Enum file, try again after rename file
-test.describe('Filtering by categories', () => {
+test.describe('filtering by categories', () => {
 
   const filters = [
     {
-      path: 'by_category=01K3E6295WEWVWBQ2RT1NTTPE8',
+      path: 'by_category=01K3GAQJ3ZJPP113MADJ6EYCAC',
       label: PowerTools.Sander
     }
   ];
@@ -37,7 +37,7 @@ test.describe('Filtering by categories', () => {
       test.skip(!!process.env.GITHUB_ACTIONS, 'Skip in GitHub Actions');
 
       // answer log
-      //Sometimes website change id of the category .... :( 
+      // Sometimes website change id of the category .... :( 
       // page.on('response', res => {
       //   console.log('➡️ Response:', res.url(), res.status());
       // });

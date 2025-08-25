@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../Pages/homePage';
-import { CartPage } from '../Pages/cartPage';
-import { ProductCardPage } from '../Pages/productCardPage';
+import { HomePage } from '../pages/homePage';
+import { CartPage } from '../pages/cartPage';
+import { ProductCardPage } from '../pages/productCardPage';
 
-test('login', async ({ page }) => {
+test('add product to cart', async ({ page }) => {
   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
   const homePage = new HomePage(page);
@@ -12,7 +12,7 @@ test('login', async ({ page }) => {
   await page.goto('');
   await homePage.openProductPage('Slip Joint Pliers');
 
-  await expect(page).toHaveURL(url => url.toString().includes('/product'));
+  await expect(page).toHaveURL(url => url.toString().includes('/product')); // use regexp
   await expect(productCardPage.productName).toContainText('Slip Joint Pliers');
   await expect(productCardPage.productPrice).toContainText('9.17');
 
