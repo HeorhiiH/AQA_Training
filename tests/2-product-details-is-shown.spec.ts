@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { HomePage } from '../Pages/homePage';
+import { HomePage } from '../pages/homePage';
 
-test('login', async ({ page }) => {
+test('check product details', async ({ page }) => {
   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
   const homePage = new HomePage(page);

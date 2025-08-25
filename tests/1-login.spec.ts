@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../Pages/loginPage';
+import { LoginPage } from '../pages/loginPage';
 
 
 const user = {
@@ -7,19 +7,6 @@ const user = {
   email: 'customer@practicesoftwaretesting.com',
   password: 'welcome01'
 }
-
-// First version of the test
-// test('login', async ({ page }) => {
-//   await page.goto('https://practicesoftwaretesting.com/auth/login');
-//   await page.locator('#email').fill(user.email);
-//   await page.locator('#password').fill(user.password);
-//   await page.getByTestId('login-submit').click();
-//   await expect(page).toHaveURL('https://practicesoftwaretesting.com/account');
-//   // line 11 i think more reliable
-//   // await expect(page.getByText('My account')).toBeVisible();
-//   await expect(page.getByTestId("page-title")).toContainText('My account');
-//   await expect(page.locator('#menu')).toContainText(user.name);
-// });
 
 // Test use page object 
 test('login', async ({ page }) => {
