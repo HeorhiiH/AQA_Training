@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
 import { HeaderFragment } from './headerFragment';
 
 export class ProductCardPage {
@@ -18,5 +18,9 @@ export class ProductCardPage {
         this.addToCartButton = page.getByTestId('add-to-cart');
         this.addToFavoritesButton = page.getByTestId('add-to-favorites');
         this.toastProductInCart = page.locator('#toast-container');
+    }
+
+    async urlPathChecking (path: string) {
+        await expect(this.page).toHaveURL(url => url.toString().includes(path));
     }
 }

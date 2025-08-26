@@ -1,5 +1,4 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/loginPage';
+import { test, expect } from '../fixtures/app';
 
 
 const user = {
@@ -9,16 +8,15 @@ const user = {
 }
 
 // Test use page object 
-test('login', async ({ page }) => {
+test('login', async ({ app }) => {
   test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
 
-  const loginPage = new LoginPage(page);
-  await page.goto('/auth/login');
-  await loginPage.enterEmail(user.email);
-  await loginPage.enterPassword(user.password);
-  await loginPage.clickLoginButton();
-  await expect(page).toHaveURL('/account');
-  await expect(page.getByTestId("page-title")).toContainText('My account');
-  await expect(page.locator('#menu')).toContainText(user.name);
+  await app.homePage.goToRoute('/auth/login');
+  await app.loginPage.enterEmail(user.email);
+  await app.loginPage.enterPassword(user.password);
+  await app.loginPage.clickLoginButton();
+  await app.productCardPage.urlPathChecking('/account');
+  await expect(app.accountPage.pageTitle).toContainText('My account');
+  await expect(app.accountPage.userName).toContainText(user.name);
 });
 

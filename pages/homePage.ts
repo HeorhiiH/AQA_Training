@@ -118,6 +118,15 @@ export class HomePage {
     //     );
     // } "sort=name,asc"
 
+    async getAllProductPrices(): Promise<number[]> {
+    const priceArray = await this.productPrice.allInnerTexts();
+    const onlyPriceValueArray: number[] = [];
+    for (const price of priceArray) {
+      onlyPriceValueArray.push(parseFloat(price.replace('$', '')));
+    }
+    return onlyPriceValueArray;
+    }
+
     async responseWaiting(param: string): Promise<import('@playwright/test').APIResponse> {
         const response = await this.page.waitForResponse(res =>
         res.url().startsWith("https://api.practicesoftwaretesting.com/products") && // use regexp
@@ -127,6 +136,12 @@ export class HomePage {
         return response;
     }
 
+    async goTo () {
+    await this.page.goto('/');
+    }
     
+    async goToRoute (partPath:string) {
+    await this.page.goto(partPath);
+    }
 
 }
