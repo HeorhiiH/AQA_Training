@@ -9,7 +9,6 @@ test('add product to cart', async ({ loggedInApp }) => {
   await loggedInApp.homePage.productPrice.first().waitFor({ state: 'visible' });
 
   const prices: number[] = await loggedInApp.homePage.getAllProductPrices();
-  console.log('massive', prices);
   const namesArray = await loggedInApp.homePage.productName.allInnerTexts();
   await loggedInApp.homePage.openProductPage(namesArray[0]);
   await loggedInApp.productCardPage.urlPathChecking('/product'); // use regexp
@@ -17,14 +16,11 @@ test('add product to cart', async ({ loggedInApp }) => {
   await loggedInApp.cartPage.cartLink.click();
   await loggedInApp.productCardPage.urlPathChecking('/checkout');
   await expect(loggedInApp.cartPage.cartProductTitle).toContainText(namesArray[0]);
-  console.log('log', prices[0]);
 
   await loggedInApp.cartPage.checkProductPrice(prices[0]);
-
-//   await expect(loggedInApp.cartPage.cartTotalPrice).toContainText(prices[0]);
   await loggedInApp.cartPage.checkTotalPrice(prices[0]);
-
   await loggedInApp.cartPage.proceedToCheckout.click();
+  
   await expect(loggedInApp.accountPage.userName).toContainText('Jane Doe');
   await loggedInApp.cartPage.proceedToCheckout2.click();
 
