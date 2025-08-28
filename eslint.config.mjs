@@ -1,6 +1,6 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import playwright from 'eslint-plugin-playwright'
+import playwright from 'eslint-plugin-playwright';
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -20,8 +20,16 @@ export default tseslint.config(
     }
   },
   {
+    // ...playwright.configs['flat/recommended'],
+    // files: ['tests/**'],
+    // rules: {
+    //   ...playwright.configs['flat/recommended'].rules,
+    //   // Customize Playwright rules
+    //   // ...
+    // },
+
     ...playwright.configs['flat/recommended'],
-    files: ['tests/**'],
+    files: ['tests/**', 'pages/**', 'fixtures/**'],
     rules: {
       ...playwright.configs['flat/recommended'].rules,
       // Customize Playwright rules
