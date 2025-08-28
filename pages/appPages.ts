@@ -1,9 +1,9 @@
 import { Page } from "@playwright/test";
-import { LoginPage } from '../pages/loginPage';
-import { HomePage } from '../pages/homePage';
-import { CartPage } from '../pages/cartPage';
-import { ProductCardPage } from '../pages/productCardPage';
-import { AccountPage } from '../pages/accountPage';
+import { LoginPage } from "../pages/loginPage";
+import { HomePage } from "../pages/homePage";
+import { CartPage } from "../pages/cartPage";
+import { ProductCardPage } from "../pages/productCardPage";
+import { AccountPage } from "../pages/accountPage";
 
 export class App {
   readonly loginPage: LoginPage;
