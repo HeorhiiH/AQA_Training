@@ -5,7 +5,7 @@ test("check product details", async ({ app }) => {
 
   await app.homePage.navigateTo();
   await app.homePage.openProductPage("Combination Pliers");
-  await app.productCardPage.urlPathChecking(/\/product/);
+  await expect(app.homePage.page).toHaveURL(/\/product/);
   await expect(app.productCardPage.productName).toContainText(
     "Combination Pliers"
   );

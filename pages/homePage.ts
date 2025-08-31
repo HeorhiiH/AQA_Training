@@ -145,14 +145,6 @@ export class HomePage {
     return response;
   }
 
-  async goTo(): Promise<void> {
-    await this.page.goto("/");
-  }
-
-  async goToRoute(partPath: string): Promise<void> {
-    await this.page.goto(partPath);
-  }
-
   async navigateTo(path: string = "/"): Promise<void> {
     await this.page.goto(path);
   }

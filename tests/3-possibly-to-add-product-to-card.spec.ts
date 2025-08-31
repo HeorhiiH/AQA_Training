@@ -6,7 +6,7 @@ test("add product to cart", async ({ app }) => {
   await app.homePage.navigateTo();
   await app.homePage.openProductPage("Slip Joint Pliers");
 
-  await app.productCardPage.urlPathChecking(/\/product/); // use regexp
+  await expect(app.homePage.page).toHaveURL(/\/product/); 
   await expect(app.productCardPage.productName).toContainText(
     "Slip Joint Pliers"
   );
@@ -21,7 +21,7 @@ test("add product to cart", async ({ app }) => {
   await expect(app.cartPage.cartQuantityCounter).toContainText("1");
 
   await app.cartPage.cartLink.click();
-  await app.productCardPage.urlPathChecking("/checkout");
+  await expect(app.homePage.page).toHaveURL(/\/checkout/);
   await expect(app.cartPage.cartProductTitle).toContainText(
     "Slip Joint Pliers"
   );

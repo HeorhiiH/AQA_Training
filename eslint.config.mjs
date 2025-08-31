@@ -20,14 +20,6 @@ export default tseslint.config(
     }
   },
   {
-    // ...playwright.configs['flat/recommended'],
-    // files: ['tests/**'],
-    // rules: {
-    //   ...playwright.configs['flat/recommended'].rules,
-    //   // Customize Playwright rules
-    //   // ...
-    // },
-
     ...playwright.configs['flat/recommended'],
     files: ['tests/**', 'pages/**', 'fixtures/**'],
     rules: {

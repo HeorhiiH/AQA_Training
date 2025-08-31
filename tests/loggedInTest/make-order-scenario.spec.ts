@@ -1,4 +1,5 @@
 import { loggedInTest as test, expect } from "../../fixtures/loggedInApp";
+import { testData } from "../../testData/testData";
 
 test("make order scenario", async ({ loggedInApp }) => {
   test.skip(!!process.env.GITHUB_ACTIONS, "Skip it in GitHub Actions");
@@ -10,10 +11,10 @@ test("make order scenario", async ({ loggedInApp }) => {
   const prices: number[] = await loggedInApp.homePage.getAllProductPrices();
   const namesArray = await loggedInApp.homePage.productName.allInnerTexts();
   await loggedInApp.homePage.openProductPage(namesArray[0]);
-  await loggedInApp.productCardPage.urlPathChecking(/\product/); 
+  await expect(loggedInApp.homePage.page).toHaveURL(/\/product/);
   await loggedInApp.productCardPage.addToCartButton.click();
   await loggedInApp.cartPage.cartLink.click();
-  await loggedInApp.productCardPage.urlPathChecking(/\/checkout/);
+  await expect(loggedInApp.homePage.page).toHaveURL(/\/checkout/);
   await expect(loggedInApp.cartPage.cartProductTitle).toContainText(
     namesArray[0]
   );
@@ -28,20 +29,20 @@ test("make order scenario", async ({ loggedInApp }) => {
   await loggedInApp.cartPage.proceedToCheckout2.click();
 
   await expect(loggedInApp.cartPage.stateField).toBeVisible();
-  await loggedInApp.cartPage.stateField.fill(process.env.CARD_STATE!); 
-  await loggedInApp.cartPage.postcodeField.fill(process.env.POST_CODE!); 
+  await loggedInApp.cartPage.stateField.fill(testData.cardState);
+  await loggedInApp.cartPage.postcodeField.fill(testData.postCode);
   await loggedInApp.cartPage.proceedToCheckout3.click();
   await expect(loggedInApp.cartPage.paymentMethodSelect).toBeVisible();
 
-  await loggedInApp.cartPage.selectPaymentMethod(process.env.PAYMENT_METHOD!); 
+  await loggedInApp.cartPage.selectPaymentMethod(testData.paymentMethod);
   await expect(loggedInApp.cartPage.cardNumberField).toBeVisible();
-  await loggedInApp.cartPage.cardNumberField.fill(process.env.CARD_NUMBER!); 
+  await loggedInApp.cartPage.cardNumberField.fill(testData.cardNumber);
 
-  await loggedInApp.cartPage.expirationDateField.fill(process.env.CARD_EXPIRE!); 
+  await loggedInApp.cartPage.expirationDateField.fill(testData.cardExpire);
 
-  await loggedInApp.cartPage.cvvField.fill(process.env.CARD_CVV!); 
+  await loggedInApp.cartPage.cvvField.fill(testData.cardCvv);
 
-  await loggedInApp.cartPage.cardHolderNameField.fill(process.env.CARD_HOLDER_NAME!); 
+  await loggedInApp.cartPage.cardHolderNameField.fill(testData.cardHolderName);
 
   await loggedInApp.cartPage.confirmButton.click();
 

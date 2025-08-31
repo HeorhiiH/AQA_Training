@@ -8,7 +8,7 @@ test("login", async ({ app }) => {
   await app.loginPage.enterEmail(process.env.EMAIL!);
   await app.loginPage.enterPassword(process.env.PASSWORD!);
   await app.loginPage.clickLoginButton();
-  await app.productCardPage.urlPathChecking("/account");
+  await expect(app.homePage.page).toHaveURL(/\/account/);
   await expect(app.accountPage.pageTitle).toContainText("My account");
   await expect(app.accountPage.userName).toContainText(process.env.NAME!);
 });
