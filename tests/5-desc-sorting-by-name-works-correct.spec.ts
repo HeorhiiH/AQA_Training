@@ -1,14 +1,11 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/homePage';
+import { test, expect } from "../fixtures/app";
 
-test('sorting by name desc', async ({ page }) => {
-  test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
+test("sorting by name desc", async ({ app }) => {
+  test.skip(!!process.env.GITHUB_ACTIONS, "Skip it in GitHub Actions");
 
-  const homePage = new HomePage(page);
-  await page.goto('');
-  await homePage.sortProducts('Name (Z - A)');
-  await homePage.responseWaiting("sort=name,desc")
-  const namesArray = await homePage.productName.allInnerTexts();
-  expect(homePage.alphabeticDescCheck(namesArray)).toBeTruthy();
-  
+  await app.homePage.navigateTo();
+  await app.homePage.sortProducts("Name (Z - A)");
+  await app.homePage.responseWaiting("sort=name,desc");
+  const namesArray = await app.homePage.productName.allInnerTexts();
+  expect(app.homePage.alphabeticDescCheck(namesArray)).toBeTruthy();
 });

@@ -1,16 +1,15 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/homePage';
+import { test, expect } from "../fixtures/app";
 
-test('check product details', async ({ page }) => {
-  test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
+test("check product details", async ({ app }) => {
+  test.skip(!!process.env.GITHUB_ACTIONS, "Skip it in GitHub Actions");
 
-  const homePage = new HomePage(page);
-  await page.goto('');
-  await homePage.openProductPage('Combination Pliers');
-
-  await expect(page).toHaveURL(url => url.toString().includes('/product'));
-  await expect(page.getByTestId("product-name")).toContainText('Combination Pliers');
-  await expect(page.getByTestId("unit-price")).toContainText('14.15');
-  await expect(page.getByTestId('add-to-cart')).toBeVisible();
-  await expect(page.getByTestId('add-to-favorites')).toBeVisible();
+  await app.homePage.navigateTo();
+  await app.homePage.openProductPage("Combination Pliers");
+  await expect(app.homePage.page).toHaveURL(/\/product/);
+  await expect(app.productCardPage.productName).toContainText(
+    "Combination Pliers"
+  );
+  await expect(app.productCardPage.productPrice).toContainText("14.15");
+  await expect(app.productCardPage.addToCartButton).toBeVisible();
+  await expect(app.productCardPage.addToFavoritesButton).toBeVisible();
 });

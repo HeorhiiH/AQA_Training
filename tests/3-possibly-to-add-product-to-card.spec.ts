@@ -1,31 +1,29 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/homePage';
-import { CartPage } from '../pages/cartPage';
-import { ProductCardPage } from '../pages/productCardPage';
+import { test, expect } from "../fixtures/app";
 
-test('add product to cart', async ({ page }) => {
-  test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
+test("add product to cart", async ({ app }) => {
+  test.skip(!!process.env.GITHUB_ACTIONS, "Skip it in GitHub Actions");
 
-  const homePage = new HomePage(page);
-  const cartPage = new CartPage(page);
-  const productCardPage = new ProductCardPage(page);
-  await page.goto('');
-  await homePage.openProductPage('Slip Joint Pliers');
+  await app.homePage.navigateTo();
+  await app.homePage.openProductPage("Slip Joint Pliers");
 
-  await expect(page).toHaveURL(url => url.toString().includes('/product')); // use regexp
-  await expect(productCardPage.productName).toContainText('Slip Joint Pliers');
-  await expect(productCardPage.productPrice).toContainText('9.17');
+  await expect(app.homePage.page).toHaveURL(/\/product/); 
+  await expect(app.productCardPage.productName).toContainText(
+    "Slip Joint Pliers"
+  );
+  await expect(app.productCardPage.productPrice).toContainText("9.17");
 
-  await expect(productCardPage.addToCartButton).toBeVisible();
-  await expect(productCardPage.addToFavoritesButton).toBeVisible();
+  await expect(app.productCardPage.addToCartButton).toBeVisible();
+  await expect(app.productCardPage.addToFavoritesButton).toBeVisible();
 
-  await productCardPage.addToCartButton.click();
-  await expect(productCardPage.toastProductInCart).toBeVisible();
-  //To add check of the showing time 
-  await expect(cartPage.cartQuantityCounter).toContainText('1');
+  await app.productCardPage.addToCartButton.click();
+  await expect(app.productCardPage.toastProductInCart).toBeVisible();
+  //To add check of the showing time
+  await expect(app.cartPage.cartQuantityCounter).toContainText("1");
 
-  await cartPage.cartLink.click();
-  await expect(page).toHaveURL(url => url.toString().includes('/checkout'));
-  await expect(cartPage.cartProductTitle).toContainText('Slip Joint Pliers');
-  await expect(cartPage.proceedToCheckout).toBeVisible();
+  await app.cartPage.cartLink.click();
+  await expect(app.homePage.page).toHaveURL(/\/checkout/);
+  await expect(app.cartPage.cartProductTitle).toContainText(
+    "Slip Joint Pliers"
+  );
+  await expect(app.cartPage.proceedToCheckout).toBeVisible();
 });

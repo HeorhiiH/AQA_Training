@@ -1,24 +1,14 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/loginPage';
+import { test, expect } from "../fixtures/app";
 
+// Test use page object
+test("login", async ({ app }) => {
+  test.skip(!!process.env.GITHUB_ACTIONS, "Skip it in GitHub Actions");
 
-const user = {
-  name: 'Jane Doe',
-  email: 'customer@practicesoftwaretesting.com',
-  password: 'welcome01'
-}
-
-// Test use page object 
-test('login', async ({ page }) => {
-  test.skip(!!process.env.GITHUB_ACTIONS, 'Skip it in GitHub Actions');
-
-  const loginPage = new LoginPage(page);
-  await page.goto('/auth/login');
-  await loginPage.enterEmail(user.email);
-  await loginPage.enterPassword(user.password);
-  await loginPage.clickLoginButton();
-  await expect(page).toHaveURL('/account');
-  await expect(page.getByTestId("page-title")).toContainText('My account');
-  await expect(page.locator('#menu')).toContainText(user.name);
+  await app.homePage.navigateTo("/auth/login");
+  await app.loginPage.enterEmail(process.env.EMAIL!);
+  await app.loginPage.enterPassword(process.env.PASSWORD!);
+  await app.loginPage.clickLoginButton();
+  await expect(app.homePage.page).toHaveURL(/\/account/);
+  await expect(app.accountPage.pageTitle).toContainText("My account");
+  await expect(app.accountPage.userName).toContainText(process.env.NAME!);
 });
-
