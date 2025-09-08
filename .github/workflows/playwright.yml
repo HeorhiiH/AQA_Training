@@ -28,6 +28,7 @@ jobs:
         run: npx playwright test
         env:
           BASE_URL: https://practicesoftwaretesting.com
+          PASSWORD: ${{ secrets.PASSWORD }}
 
       # Загружаем Playwright HTML Report (всегда, даже если тесты упали)
       - name: Upload Playwright HTML Report
