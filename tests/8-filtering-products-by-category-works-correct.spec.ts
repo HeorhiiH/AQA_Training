@@ -10,21 +10,27 @@ test.describe("filtering by categories", () => {
   ];
 
   filters.forEach(({ path, label }) => {
-    test(`should filter products by category: ${label}`, async ({ app }) => {
-      test.skip(!!process.env.GITHUB_ACTIONS, "Skip in GitHub Actions");
+    test(
+      `should filter products by category: ${label}`,
+      {
+        tag: "@regression",
+      },
+      async ({ app }) => {
+        test.skip(!!process.env.GITHUB_ACTIONS, "Skip in GitHub Actions");
 
-      // answer log
-      // Sometimes website change id of the category .... :(
-      // Should be created method because page is unavailable here
-      // page.on('response', res => {
-      //   console.log('➡️ Response:', res.url(), res.status());
-      // });
+        // answer log
+        // Sometimes website change id of the category .... :(
+        // Should be created method because page is unavailable here
+        // page.on('response', res => {
+        //   console.log('➡️ Response:', res.url(), res.status());
+        // });
 
-      await app.homePage.navigateTo();
-      await app.homePage.checkboxItem.getByText(label).click();
-      await app.homePage.responseWaiting(path);
-      const namesArray = await app.homePage.productName.allInnerTexts();
-      expect(namesArray.every((name) => name.includes(label))).toBeTruthy();
-    });
+        await app.homePage.navigateTo();
+        await app.homePage.checkboxItem.getByText(label).click();
+        await app.homePage.responseWaiting(path);
+        const namesArray = await app.homePage.productName.allInnerTexts();
+        expect(namesArray.every((name) => name.includes(label))).toBeTruthy();
+      }
+    );
   });
 });
