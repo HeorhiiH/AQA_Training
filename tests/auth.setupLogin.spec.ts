@@ -10,9 +10,6 @@ setup("authenticate via API and verify login", async ({ browser }) => {
     "https://api.practicesoftwaretesting.com/users/login",
     {
       data: {
-        // email: 'customer@practicesoftwaretesting.com',
-        // password: 'welcome01',
-
         email: process.env.EMAIL!,
         password: process.env.PASSWORD!,
       },
@@ -34,7 +31,7 @@ setup("authenticate via API and verify login", async ({ browser }) => {
     localStorage.setItem("auth-token", token); // Kay in storage which has token
   }, token);
 
-  // 3. Сохраняем state
+  // 3. Save state
   await page.context().storageState({ path: authFile });
 
   // await browser.close();

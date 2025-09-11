@@ -1,0 +1,327 @@
+{
+  "config": {
+    "configFile": "D:\\AQA30_PlayWr\\AQA_Training\\playwright.config.ts",
+    "rootDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "dot",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/AQA30_PlayWr/AQA_Training/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "setupLogin",
+        "name": "setupLogin",
+        "testDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.setupLogin\\.spec\\.ts$/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/AQA30_PlayWr/AQA_Training/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/AQA30_PlayWr/AQA_Training/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/AQA30_PlayWr/AQA_Training/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.54.1",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth.setupLogin.spec.ts",
+      "file": "auth.setupLogin.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "authenticate via API and verify login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setupLogin",
+              "projectName": "setupLogin",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2186,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-11T10:46:33.212Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7d1ec86d3b11c1d9914b-22856e0f1bde70c848af",
+          "file": "auth.setupLogin.spec.ts",
+          "line": 6,
+          "column": 6
+        }
+      ]
+    },
+    {
+      "title": "1-login.spec.ts",
+      "file": "1-login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "login",
+          "ok": false,
+          "tags": [
+            "smoke"
+          ],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8514,
+                  "error": {
+                    "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/\\/account/\u001b[39m\nReceived string:  \u001b[31m\"https://practicesoftwaretesting.com/auth/login\"\u001b[39m\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"https://practicesoftwaretesting.com/auth/login\"\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/\\/account/\u001b[39m\nReceived string:  \u001b[31m\"https://practicesoftwaretesting.com/auth/login\"\u001b[39m\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"https://practicesoftwaretesting.com/auth/login\"\u001b[22m\n\n    at D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts:16:37",
+                    "location": {
+                      "file": "D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts",
+                      "column": 37,
+                      "line": 16
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m app\u001b[33m.\u001b[39mloginPage\u001b[33m.\u001b[39menterPassword(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mPASSWORD\u001b[39m\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36mawait\u001b[39m app\u001b[33m.\u001b[39mloginPage\u001b[33m.\u001b[39mclickLoginButton()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39mhomePage\u001b[33m.\u001b[39mpage)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/account/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39maccountPage\u001b[33m.\u001b[39mpageTitle)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"My account\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39maccountPage\u001b[33m.\u001b[39muserName)\u001b[33m.\u001b[39mtoContainText(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mNAME\u001b[39m\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m   }\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts",
+                        "column": 37,
+                        "line": 16
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/\\/account/\u001b[39m\nReceived string:  \u001b[31m\"https://practicesoftwaretesting.com/auth/login\"\u001b[39m\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"https://practicesoftwaretesting.com/auth/login\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m app\u001b[33m.\u001b[39mloginPage\u001b[33m.\u001b[39menterPassword(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mPASSWORD\u001b[39m\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36mawait\u001b[39m app\u001b[33m.\u001b[39mloginPage\u001b[33m.\u001b[39mclickLoginButton()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39mhomePage\u001b[33m.\u001b[39mpage)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/account/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39maccountPage\u001b[33m.\u001b[39mpageTitle)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"My account\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39maccountPage\u001b[33m.\u001b[39muserName)\u001b[33m.\u001b[39mtoContainText(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mNAME\u001b[39m\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m   }\u001b[0m\n\u001b[2m    at D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts:16:37\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-11T10:46:37.232Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\AQA30_PlayWr\\AQA_Training\\test-results\\1-login-login-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "D:\\AQA30_PlayWr\\AQA_Training\\test-results\\1-login-login-chromium\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\AQA30_PlayWr\\AQA_Training\\test-results\\1-login-login-chromium\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts",
+                    "column": 37,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c505212a9f19102e22e9-a300ef7286f534aef89a",
+          "file": "1-login.spec.ts",
+          "line": 4,
+          "column": 5
+        },
+        {
+          "title": "login",
+          "ok": false,
+          "tags": [
+            "smoke"
+          ],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "smoke",
+              "projectName": "smoke",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 8345,
+                  "error": {
+                    "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/\\/account/\u001b[39m\nReceived string:  \u001b[31m\"https://practicesoftwaretesting.com/auth/login\"\u001b[39m\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"https://practicesoftwaretesting.com/auth/login\"\u001b[22m\n",
+                    "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/\\/account/\u001b[39m\nReceived string:  \u001b[31m\"https://practicesoftwaretesting.com/auth/login\"\u001b[39m\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"https://practicesoftwaretesting.com/auth/login\"\u001b[22m\n\n    at D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts:16:37",
+                    "location": {
+                      "file": "D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts",
+                      "column": 37,
+                      "line": 16
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m app\u001b[33m.\u001b[39mloginPage\u001b[33m.\u001b[39menterPassword(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mPASSWORD\u001b[39m\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36mawait\u001b[39m app\u001b[33m.\u001b[39mloginPage\u001b[33m.\u001b[39mclickLoginButton()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39mhomePage\u001b[33m.\u001b[39mpage)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/account/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39maccountPage\u001b[33m.\u001b[39mpageTitle)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"My account\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39maccountPage\u001b[33m.\u001b[39muserName)\u001b[33m.\u001b[39mtoContainText(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mNAME\u001b[39m\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m   }\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts",
+                        "column": 37,
+                        "line": 16
+                      },
+                      "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/\\/account/\u001b[39m\nReceived string:  \u001b[31m\"https://practicesoftwaretesting.com/auth/login\"\u001b[39m\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    9 × unexpected value \"https://practicesoftwaretesting.com/auth/login\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 14 |\u001b[39m     \u001b[36mawait\u001b[39m app\u001b[33m.\u001b[39mloginPage\u001b[33m.\u001b[39menterPassword(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mPASSWORD\u001b[39m\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36mawait\u001b[39m app\u001b[33m.\u001b[39mloginPage\u001b[33m.\u001b[39mclickLoginButton()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39mhomePage\u001b[33m.\u001b[39mpage)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/account/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39maccountPage\u001b[33m.\u001b[39mpageTitle)\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"My account\"\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m expect(app\u001b[33m.\u001b[39maccountPage\u001b[33m.\u001b[39muserName)\u001b[33m.\u001b[39mtoContainText(process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mNAME\u001b[39m\u001b[33m!\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m   }\u001b[0m\n\u001b[2m    at D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts:16:37\u001b[22m"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-11T10:46:37.303Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\AQA30_PlayWr\\AQA_Training\\test-results\\1-login-login-smoke\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "D:\\AQA30_PlayWr\\AQA_Training\\test-results\\1-login-login-smoke\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\AQA30_PlayWr\\AQA_Training\\test-results\\1-login-login-smoke\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\AQA30_PlayWr\\AQA_Training\\tests\\1-login.spec.ts",
+                    "column": 37,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c505212a9f19102e22e9-7e9437d3fdd0ba0b4340",
+          "file": "1-login.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-09-11T10:46:32.063Z",
+    "duration": 14952.497,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

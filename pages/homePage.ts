@@ -67,60 +67,25 @@ export class HomePage {
     await this.paginationSomePage.getByText(number).click();
   }
 
-  alphabeticAscCheck(arr: string[]): boolean {
-    if (arr.length <= 1) {
-      return true;
-    }
-    for (let i = 1; i < arr.length; i++) {
-      if (arr[i].toLowerCase() < arr[i - 1].toLowerCase()) {
+  universalSortDirectMethod(
+    arr: (string | number)[],
+    order: "asc" | "desc" = "asc"
+  ): boolean {
+    const normalized = arr.map((v) =>
+      typeof v === "string" ? v.toLowerCase().trim() : v
+    );
+
+    for (let i = 0; i < normalized.length - 1; i++) {
+      if (order === "asc" && normalized[i] > normalized[i + 1]) {
+        return false;
+      }
+      if (order === "desc" && normalized[i] < normalized[i + 1]) {
         return false;
       }
     }
+
     return true;
   }
-
-  alphabeticDescCheck(arr: string[]): boolean {
-    if (arr.length <= 1) {
-      return true;
-    }
-    for (let i = 1; i < arr.length; i++) {
-      if (arr[i].toLowerCase() > arr[i - 1].toLowerCase()) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  numberAscCheck(arr: number[]): boolean {
-    if (arr.length <= 1) {
-      return true;
-    }
-    for (let i = 1; i < arr.length; i++) {
-      if (arr[i] > arr[i - 1]) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  numberDescCheck(arr: number[]): boolean {
-    if (arr.length <= 1) {
-      return true;
-    }
-    for (let i = 1; i < arr.length; i++) {
-      if (arr[i] < arr[i - 1]) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  // async responseWaiting (param) {
-  //     await this.page.waitForResponse(response =>
-  //     response.url().includes(param) &&
-  //     response.status() === 200
-  //     );
-  // } "sort=name,asc"
 
   async getAllProductPrices(): Promise<number[]> {
     const priceArray = await this.productPrice.allInnerTexts();
