@@ -1,6 +1,6 @@
-import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
-import path from 'path';
+import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
+import path from "path";
 
 dotenv.config();
 
@@ -16,7 +16,7 @@ dotenv.config();
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -34,43 +34,49 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // trace: 'on-first-retry',
-    testIdAttribute: 'data-test',
+    testIdAttribute: "data-test",
 
-    headless: true, // на CI окно браузера скрыто
-    screenshot: 'only-on-failure', // делать скриншот при падении
-    video: 'retain-on-failure', // сохранять видео при падении
-    trace: 'retain-on-failure', // сохранять trace.zip при падении
+    headless: true,
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
+    trace: "on-first-retry",
   },
 
-  reporter: [['html', { outputFolder: 'playwright-report', open: 'never' }]],
+  reporter: [
+    ["html", { outputFolder: "playwright-report", open: "never" }],
+    ["dot"],
+    ["json", { outputFile: "test-results.json" }],
+  ],
 
   /* Configure projects for major browsers */
   projects: [
-
-    { name: 'setupLogin', testMatch: /.*\.setupLogin\.spec\.ts$/  },
+    { name: "setupLogin", testMatch: /.*\.setupLogin\.spec\.ts$/ },
 
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'],
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
         // storageState: 'playwright/.auth/user.json',
       },
-      dependencies: ['setupLogin'],
+      dependencies: ["setupLogin"],
     },
     {
-      name: 'smoke',
+      name: "smoke",
       grep: /@smoke/,
-      use: { ...devices['Desktop Chrome'],
+      use: {
+        ...devices["Desktop Chrome"],
         // storageState: 'playwright/.auth/user.json',
       },
-      dependencies: ['setupLogin'],
+      dependencies: ["setupLogin"],
     },
     {
-      name: 'regression',
+      name: "regression",
       grep: /@regression/,
-      use: { ...devices['Desktop Chrome'],
+      use: {
+        ...devices["Desktop Chrome"],
         // storageState: 'playwright/.auth/user.json',
       },
-      dependencies: ['setupLogin'],
+      dependencies: ["setupLogin"],
     },
 
     // {

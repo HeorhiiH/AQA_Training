@@ -25,12 +25,24 @@ test.describe("filtering by categories", () => {
         //   console.log('➡️ Response:', res.url(), res.status());
         // });
 
-        await app.homePage.navigateTo();
-        await app.homePage.checkboxItem.getByText(label).click();
-        await app.homePage.responseWaiting(path);
-        const namesArray = await app.homePage.productName.allInnerTexts();
-        expect(namesArray.every((name) => name.includes(label))).toBeTruthy();
+        await test.step("Navigate to home page", async () => {
+          await app.homePage.navigateTo();
+        });
+
+        await test.step(`Apply filter by category: ${label}`, async () => {
+          await app.homePage.checkboxItem.getByText(label).click();
+        });
+
+        await test.step(`Wait for response with filter param: ${path}`, async () => {
+          await app.homePage.responseWaiting(path);
+        });
+
+        await test.step("Verify filtered products contain category label", async () => {
+          const namesArray = await app.homePage.productName.allInnerTexts();
+          expect(namesArray.every((name) => name.includes(label))).toBeTruthy();
+        });
       }
     );
   });
 });
+
