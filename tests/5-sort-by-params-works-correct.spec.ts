@@ -1,5 +1,7 @@
 import { test, expect } from "../fixtures/app";
 
+test.skip(!!process.env.GITHUB_ACTIONS, "Skip it in GitHub Actions");
+
 test.describe("Product sorting", () => {
   const sortParams = [
     {
@@ -33,7 +35,6 @@ test.describe("Product sorting", () => {
       `should sort products by ${sortOrder}`,
       { tag: "@regression" },
       async ({ app }) => {
-        test.skip(!!process.env.GITHUB_ACTIONS, "Skip it in GitHub Actions");
 
         await test.step("Navigate to home page", async () => {
           await app.homePage.navigateTo();

@@ -1,6 +1,8 @@
 import { test, expect } from "../fixtures/app";
 import { PowerTools } from "../enum/homePageEnum";
 
+test.skip(!!process.env.GITHUB_ACTIONS, "Skip in GitHub Actions");
+
 test.describe("filtering by categories", () => {
   const filters = [
     {
@@ -16,14 +18,6 @@ test.describe("filtering by categories", () => {
         tag: "@regression",
       },
       async ({ app }) => {
-        test.skip(!!process.env.GITHUB_ACTIONS, "Skip in GitHub Actions");
-
-        // answer log
-        // Sometimes website change id of the category .... :(
-        // Should be created method because page is unavailable here
-        // page.on('response', res => {
-        //   console.log('➡️ Response:', res.url(), res.status());
-        // });
 
         await test.step("Navigate to home page", async () => {
           await app.homePage.navigateTo();
