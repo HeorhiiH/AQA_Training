@@ -4,31 +4,31 @@ import { PowerTools } from "../enum/homePageEnum";
 test.skip(!!process.env.GITHUB_ACTIONS, "Skip in GitHub Actions");
 
 test.describe("filtering by categories", () => {
-  const filters = [
-    {
-      path: "by_category=01K3HGG36Y6W2BYVWN8KWXSZJZ",
-      label: PowerTools.Sander,
-    },
-  ];
+  const filters = [{ label: PowerTools.Sander }];
 
-  filters.forEach(({ path, label }) => {
+  filters.forEach(({ label }) => {
     test(
       `should filter products by category: ${label}`,
-      {
-        tag: "@regression",
-      },
+      { tag: "@regression" },
       async ({ app }) => {
-
         await test.step("Navigate to home page", async () => {
           await app.homePage.navigateTo();
         });
 
         await test.step(`Apply filter by category: ${label}`, async () => {
-          await app.homePage.checkboxItem.getByText(label).click();
-        });
+          const page = app.homePage.page;
 
-        await test.step(`Wait for response with filter param: ${path}`, async () => {
-          await app.homePage.responseWaiting(path);
+          const labelLocator = page.locator("label", { hasText: label });
+
+          const checkbox = labelLocator.locator("input[type='checkbox']");
+
+          const categoryId = await checkbox.getAttribute("value");
+          console.log("log id", categoryId);
+
+          await Promise.all([
+            app.homePage.responseWaiting(`by_category=${categoryId}`),
+            labelLocator.click(),
+          ]);
         });
 
         await test.step("Verify filtered products contain category label", async () => {
@@ -39,4 +39,3 @@ test.describe("filtering by categories", () => {
     );
   });
 });
-
