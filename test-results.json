@@ -1,0 +1,292 @@
+{
+  "config": {
+    "configFile": "D:\\AQA30_PlayWr\\AQA_Training\\playwright.config.ts",
+    "rootDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "dot",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/AQA30_PlayWr/AQA_Training/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "setupLogin",
+        "name": "setupLogin",
+        "testDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*\\.setupLogin\\.spec\\.ts$/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/AQA30_PlayWr/AQA_Training/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/AQA30_PlayWr/AQA_Training/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "smoke",
+        "name": "smoke",
+        "testDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "D:/AQA30_PlayWr/AQA_Training/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "regression",
+        "name": "regression",
+        "testDir": "D:/AQA30_PlayWr/AQA_Training/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.54.1",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth.setupLogin.spec.ts",
+      "file": "auth.setupLogin.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "authenticate via API and verify login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setupLogin",
+              "projectName": "setupLogin",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2244,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-09-17T23:53:01.405Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7d1ec86d3b11c1d9914b-22856e0f1bde70c848af",
+          "file": "auth.setupLogin.spec.ts",
+          "line": 6,
+          "column": 6
+        }
+      ]
+    },
+    {
+      "title": "4-filtering-products-by-category-works-correct.spec.ts",
+      "file": "4-filtering-products-by-category-works-correct.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "filtering by categories",
+          "file": "4-filtering-products-by-category-works-correct.spec.ts",
+          "line": 43,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should filter products by category: Sander",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4451,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "log id 01K5CYG8TF4S9782HNCM0AGEEM\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Navigate to home page",
+                          "duration": 2801
+                        },
+                        {
+                          "title": "Apply filter by category: Sander",
+                          "duration": 666
+                        },
+                        {
+                          "title": "Verify filtered products contain category label",
+                          "duration": 53
+                        }
+                      ],
+                      "startTime": "2025-09-17T23:53:05.362Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "09ba98a8855c6d85c802-a27a4dc8aa81961e049c",
+              "file": "4-filtering-products-by-category-works-correct.spec.ts",
+              "line": 49,
+              "column": 9
+            },
+            {
+              "title": "should filter products by category: Sander",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "regression",
+                  "projectName": "regression",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 4222,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "log id 01K5CYG8TF4S9782HNCM0AGEEM\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Navigate to home page",
+                          "duration": 2445
+                        },
+                        {
+                          "title": "Apply filter by category: Sander",
+                          "duration": 864
+                        },
+                        {
+                          "title": "Verify filtered products contain category label",
+                          "duration": 29
+                        }
+                      ],
+                      "startTime": "2025-09-17T23:53:05.352Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "09ba98a8855c6d85c802-114acc1da37b5c9c5fe4",
+              "file": "4-filtering-products-by-category-works-correct.spec.ts",
+              "line": 49,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-09-17T23:53:00.556Z",
+    "duration": 10084.305,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

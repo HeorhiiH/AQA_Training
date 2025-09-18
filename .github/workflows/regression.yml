@@ -25,9 +25,9 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --grep @regression
         env:
-          BASE_URL: ${{ secrets.BASE_UR }}
+          BASE_URL: https://practicesoftwaretesting.com
           PASSWORD: ${{ secrets.PASSWORD }}
 
       # Загружаем Playwright HTML Report (всегда, даже если тесты упали)
